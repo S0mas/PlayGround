@@ -67,4 +67,3 @@ inline std::ostream& operator<<(std::ostream &output, const PythagoreanTriplesGe
 	output << "X: " << p.x_ << " Y: " << p.y_ << " Z: " << p.z_ << '\n';
 	return output;
 }
-
