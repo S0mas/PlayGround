@@ -13,10 +13,9 @@ class FiboSeqGenerator {
 				return f2;
 			}
 
-			auto const next = f1 + f2;
-			f1 = f2;
-			f2 = next;
-			return next;
+			std::swap(f1, f2);
+			f2 += f1;
+			return f2;
 		};
 	}
 public:
@@ -24,10 +23,8 @@ public:
 		unsigned long long f1 = 0;
 		unsigned long long f2 = 1;
 		for (auto i = 1; i < startId; ++i) {
-			unsigned long long result = 0;
-			result = f1 + f2;
-			f1 = f2;
-			f2 = result;
+			std::swap(f1, f2);
+			f2 += f1;
 		}
 		return getFiboGenerator(f1, f2);
 	}
@@ -45,10 +42,9 @@ class FiboGen {
 	//Returns second fib seq number and sets next_ object to fibo numbers generation algorithm
 	int getSecond() const {
 		next_ = [f1 = 0, f2 = 1]() mutable {
-			auto const nextFibo = f1 + f2;
-			f1 = f2;
-			f2 = nextFibo;
-			return nextFibo;
+			std::swap(f1, f2);
+			f2 += f1;
+			return f2;
 		};
 		return 1;
 	}
