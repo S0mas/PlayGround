@@ -23,8 +23,8 @@ public:
 	static auto getFiboGenerator(const int startId) {
 		unsigned long long f1 = 0;
 		unsigned long long f2 = 1;
-		unsigned long long result = 0;
 		for (auto i = 1; i < startId; ++i) {
+			unsigned long long result = 0;
 			result = f1 + f2;
 			f1 = f2;
 			f2 = result;
@@ -61,4 +61,11 @@ public:
 		return next_();
 	}
 };
+
+static void printReverseFib(const int max, const int f1 = 0, const int f2 = 1) {
+	if (f2 <= max)
+		printReverseFib(max, f2, f1 + f2);
+	std::cout << f1 << ' ';
+}
+
 
